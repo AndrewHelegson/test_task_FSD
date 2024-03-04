@@ -27,7 +27,10 @@ export type ReposState = {
   currentPage: number;
   reposPerPage: number;
 };
-
+interface Action {
+  payload: any;
+  type: string;
+}
 const GET_MY_REPOS = gql`
   query {
     viewer {
@@ -61,7 +64,7 @@ export const fetchRepos = createAsyncThunk(
     return data;
   }
 );
-const setError = (state: any, action: any) => {
+const setError = (state: ReposState, action: Action) => {
   state.status = "rejected";
   state.error = action.payload;
 };
