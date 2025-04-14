@@ -1,5 +1,6 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 export interface Repo {
   description: string;
   id: string;
@@ -16,6 +17,7 @@ export interface Repo {
   stargazerCount: number;
   url: string;
 }
+
 export type ReposState = {
   repos: Repo[];
   searchedRepos: Repo[];
@@ -27,10 +29,7 @@ export type ReposState = {
   currentPage: number;
   reposPerPage: number;
 };
-interface Action {
-  payload: any;
-  type: string;
-}
+
 const GET_MY_REPOS = gql`
   query {
     viewer {
@@ -46,6 +45,7 @@ const GET_MY_REPOS = gql`
     }
   }
 `;
+
 export const client = new ApolloClient({
   uri: "https://api.github.com/graphql",
   cache: new InMemoryCache(),
@@ -64,10 +64,7 @@ export const fetchRepos = createAsyncThunk(
     return data;
   }
 );
-const setError = (state: ReposState, action: Action) => {
-  state.status = "rejected";
-  state.error = action.payload;
-};
+
 /* const repos =
   localStorage.getItem("repos") !== null
     ? JSON.parse(localStorage.getItem("repos") || "")
@@ -90,6 +87,7 @@ const initialState: ReposState = {
   currentPage: page,
   reposPerPage: 10,
 };
+
 const reposSlice = createSlice({
   name: "repos",
   initialState,
@@ -128,7 +126,10 @@ const reposSlice = createSlice({
         state.status = "resolved";
         state.repos = action.payload.data.viewer.repositories.nodes;
       })
-      .addCase(fetchRepos.rejected, setError);
+      .addCase(fetchRepos.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.error.message || null;
+      });
   },
 });
 

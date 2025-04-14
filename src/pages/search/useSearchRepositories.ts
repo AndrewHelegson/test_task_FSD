@@ -1,7 +1,7 @@
+import { gql } from "@apollo/client";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/store/hooks";
 import { client, searchRepos, setLoading } from "../../shared/slice/reposSlice";
-import { gql } from "@apollo/client";
 
 const GET_SEARCHED_REPOS = gql`
   query SearhRepos($query: String!) {

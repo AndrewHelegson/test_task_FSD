@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../../app/store/hooks";
-import { fetchRepos } from "../../../shared/slice/reposSlice";
-import Pagination from "../../../features/Pagination";
-import RepoItem from "../../../widgets/repoItem/ui/RepoItem";
 import { Flex } from "antd";
-import Loader from "../../../widgets/loader/ui/Loader";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "~/app/store/hooks";
+import Loader from "~/widgets/loader";
+import RepoItem from "~/widgets/repoItem";
+import Pagination from "~/features/pagination";
+import { fetchRepos } from "~/shared/slice/reposSlice";
 
 export interface Repo {
   description: string;

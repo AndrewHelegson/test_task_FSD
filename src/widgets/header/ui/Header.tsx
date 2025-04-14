@@ -1,8 +1,8 @@
 import { Input, Layout } from "antd";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app/store/hooks";
 import useSearchRepositories from "../../../pages/search/useSearchRepositories";
 import { setCurrentPage, setValue } from "../../../shared/slice/reposSlice";
-import { useNavigate } from "react-router-dom";
 
 const { Search } = Input;
 

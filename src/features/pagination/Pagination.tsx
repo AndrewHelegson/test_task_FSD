@@ -1,5 +1,5 @@
-import { useAppDispatch, useAppSelector } from "../app/store/hooks";
-import { setCurrentPage } from "../shared/slice/reposSlice";
+import { useAppDispatch, useAppSelector } from "../../app/store/hooks";
+import { setCurrentPage } from "../../shared/slice/reposSlice";
 
 export interface PaginationProps {
   perPage: number;

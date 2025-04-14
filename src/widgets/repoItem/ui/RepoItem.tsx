@@ -1,8 +1,8 @@
+import { Card, Typography } from "antd";
+import Paragraph from "antd/es/typography/Paragraph";
+import Title from "antd/es/typography/Title";
 import { Link } from "react-router-dom";
 
-import { Card, Typography } from "antd";
-import Title from "antd/es/typography/Title";
-import Paragraph from "antd/es/typography/Paragraph";
 const { Text } = Typography;
 
 export interface RepoItemProps {

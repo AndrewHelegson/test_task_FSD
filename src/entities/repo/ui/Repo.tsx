@@ -1,13 +1,12 @@
+import { Card, Typography } from "antd";
+import Link from "antd/es/typography/Link";
+import Paragraph from "antd/es/typography/Paragraph";
+import Title from "antd/es/typography/Title";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import useGetRepo from "../useGetRepo";
 import { useAppSelector } from "../../../app/store/hooks";
 import Loader from "../../../widgets/loader/ui/Loader";
-
-import { Card, Typography } from "antd";
-import Title from "antd/es/typography/Title";
-import Paragraph from "antd/es/typography/Paragraph";
-import Link from "antd/es/typography/Link";
+import useGetRepo from "../useGetRepo";
 
 export default function Repo() {
   const { id } = useParams();
@@ -15,7 +14,7 @@ export default function Repo() {
   const repo = useAppSelector((state) => state.repos.currentRepo);
   useEffect(() => {
     searchRepository(id);
-  }, []);
+  });
   const { Text } = Typography;
   let formattedDate = "";
   if (repo) {

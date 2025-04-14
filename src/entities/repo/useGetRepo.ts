@@ -1,7 +1,7 @@
+import { gql } from "@apollo/client";
 import { useState } from "react";
 import { useAppDispatch } from "../../app/store/hooks";
 import { client, setCurrentRepo } from "../../shared/slice/reposSlice";
-import { gql } from "@apollo/client";
 
 const GET_REPO = gql`
   query repository($id: ID!) {
